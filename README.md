@@ -22,7 +22,7 @@ To use this code, follow these steps:
 #### AWS Requirements
 
 1. Create an S3 Bucket.
-2. Create a DynamoDB Table with partition ket `LockID`.
+2. Create a DynamoDB Table with partition key `LockID`.
 3. Create an IAM user and generate CLI credentials.
 4. Go to the file `main.tf` and enter the values for the S3 Bucket and DynamoDB Table.
 
