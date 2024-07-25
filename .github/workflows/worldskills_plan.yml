@@ -29,18 +29,12 @@ jobs:
 
       - name: Terraform Plan (Main)
         id: plan00
-        run: terraform plan
+        run: terraform plan -target=./terraform/main.tf
         continue-on-error: true
-        working-directory: ./terraform/main.tf 
+        working-directory: ./terraform
       
-      - name: Terraform Plan (base_ec2)
+      - name: Terraform Plan (all)
         id: plan01
-        run: terraform plan
+        run: terraform plan 
         continue-on-error: true
-        working-directory: ./terraform/base_ec2.tf
-
-      - name: Terraform Plan (ec2_prod)
-        id: plan02
-        run: terraform plan
-        continue-on-error: true
-        working-directory: ./terraform/ec2_prod.tf
+        working-directory: ./terraform
