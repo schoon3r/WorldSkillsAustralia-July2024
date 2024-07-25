@@ -19,22 +19,16 @@ jobs:
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ap-southeast-2
-
+          aws-region: us-east-1
+          
       - name: Terraform Init
         id: init
         run: terraform init
         continue-on-error: true
         working-directory: ./terraform
-
-      - name: Terraform Plan (Main)
-        id: plan00
-        run: terraform plan -target=./terraform/main.tf
-        continue-on-error: true
-        working-directory: ./terraform
-      
-      - name: Terraform Plan (all)
-        id: plan01
+   
+      - name: Terraform Plan
+        id: plan
         run: terraform plan 
         continue-on-error: true
         working-directory: ./terraform
