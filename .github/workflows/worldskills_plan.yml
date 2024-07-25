@@ -1,5 +1,5 @@
 ---
-name: Spin Up ASCF Infrastructure
+name: Validate World Skills Australia IaC Build
 
 on:
   push: { branches: [main] }

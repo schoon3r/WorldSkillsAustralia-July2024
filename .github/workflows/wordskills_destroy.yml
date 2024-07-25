@@ -1,4 +1,4 @@
-name: Destroy ASCF Infrastructure
+name: Destroy World Skills Australia IaC Build
 
 on:
   workflow_dispatch:

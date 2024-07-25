@@ -1,5 +1,5 @@
 ---
-name: Apply ASCF Infrastructure Build
+name: Apply World Skills Australia IaC Build
 
 on:  
   workflow_dispatch:
