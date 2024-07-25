@@ -36,7 +36,7 @@ To use this code, follow these steps:
 
 After the resources are created, your S3 bucket and DynamoDB table will be referenced for managing the state of your Terraform configurations in AWS. Your infrastructure should look similar to this topology.
 
-<img src="img/IaC_topology.png" alt="sample_topology" style="max-height: 950px;">
+<img src="img/worldskills_topology.png" alt="sample_topology" style="max-height: 950px;">
 
 ## License of Use
 
