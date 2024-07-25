@@ -9,11 +9,9 @@ This workshop exercise demonstrates the use of Terraform code to set up the nece
 
 1. **Github Actions**: The code relies on Github Actions for automating the deployment and management of infrastructure changes. Github Actions provide a CI/CD pipeline that allows for continuous integration and continuous delivery of Terraform configurations, enabling automated testing, validation, and deployment of infrastructure updates. This integration ensures that any changes to the Terraform code are automatically tested and applied in a consistent and reliable manner.
 
-2. **Terraform Required Resources**: The code creates an S3 bucket and DynamoDB Tableto store the Terraform state file and to handle state locking. These required resources ensures that only one person can modify the Terraform state at a time, preventing conflicts and corruption of the state file.
+2. **Terraform Backend Configuration**: The code configures the Terraform backend to use the created S3 bucket and DynamoDB table for storing and locking the state file, respectively.
 
-3. **Terraform Backend Configuration**: The code configures the Terraform backend to use the created S3 bucket and DynamoDB table for storing and locking the state file, respectively.
-
-4. **Infrastructure Setup**: The code configures a few EC2 instances with generic security groups in different subnets as an example to represents services that can host applications.
+3. **Infrastructure Setup**: The code configures a few EC2 instances with generic security groups in different subnets as an example to represents services that can host applications.
 
 ## Usage
 
