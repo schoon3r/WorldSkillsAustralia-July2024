@@ -19,7 +19,16 @@ This workshop exercise demonstrates the use of Terraform code to set up the nece
 
 To use this code, follow these steps:
 
-1. Please login to your github account. Yes you need one!
+#### AWS Requirements
+
+1. Create an S3 Bucket.
+2. Create a DynamoDB Table with partition ket `LockID`.
+3. Create an IAM user and generate CLI credentials.
+4. Go to the file `main.tf` and enter the values for the S3 Bucket and DynamoDB Table.
+
+#### Github Actions
+
+1. Please login to your github account. Yes you need one! :laughing:
 2. Fork the repository into your github account.
 3. From the cloned repo, go to the `Settings` tab. From the left hand menu bar choose `Secrets and variables` > `Actions` and click `New repository secret`.
 4. Create two secret entries named `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`. Generate values from your IAM user account.
