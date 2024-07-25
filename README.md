@@ -1,5 +1,5 @@
 
-<img src="img/CyberOps Logo.svg" alt="CyberOps Logo" style="max-height: 250px;">
+<img src="img/CyberOps Logo.svg" alt="CyberOps Logo" style="height: 250px;">
 
 # World Skills Australia Workshop 2024
 
