@@ -18,17 +18,14 @@ variable "private_subnet" {
   ]
 }
 
-variable "aws_region" {
-  description = "AWS region"
+variable "aws_region" {  
   default     = "us-east-1"
 }
 
-variable "s3_bucket_name" {
-  description = "S3 bucket to store Terraform state"
-  default     = "my-terraform-state-bucket"
+variable "s3_bucket_name" {  
+  default     = "tf-state-12der3"
 }
 
-variable "dynamodb_table_name" {
-  description = "DynamoDB table for Terraform state locking"
-  default     = "my-terraform-locks"
+variable "dynamodb_table_name" {  
+  default     = "tf-lock-12der3"
 }

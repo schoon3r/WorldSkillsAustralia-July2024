@@ -1,3 +1,4 @@
+---
 name: Destroy World Skills Australia IaC Build
 
 on:
@@ -23,3 +24,4 @@ jobs:
         id: destroy
         run: terraform destroy -auto-approve
         working-directory: ./terraform
+        if: github.event_name == 'workflow_dispatch'

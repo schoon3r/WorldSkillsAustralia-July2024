@@ -1,82 +1,28 @@
-# ---
-# name: Apply World Skills Australia IaC Build
-
-# on:  
-#   workflow_dispatch:
-
-# jobs:
-#   terraform-apply:
-#     name: "Terraform Apply"
-#     runs-on: ubuntu-latest
-    
-#     steps:
-#       - name: Checkout Repository
-#         uses: actions/checkout@v4
-
-#       - name: Configure AWS Credentials
-#         uses: aws-actions/configure-aws-credentials@v4
-#         with:
-#           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-#           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-#           aws-region: ap-southeast-2
-
-#       - name: Setup Terraform
-#         uses: hashicorp/setup-terraform@v3
-#         with:
-#           terraform_version: 1.8.3
-#           cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}      
-
-#       - name: Terraform Init
-#         id: init
-#         run: terraform init
-#         continue-on-error: true
-#         working-directory: ./terraform
-
-#       - name: Terraform Validate
-#         id: validate
-#         run: terraform validate
-#         continue-on-error: true
-#         working-directory: ./terraform
-      
-#       - name: Terraform Apply
-#         id: apply
-#         run: terraform apply -auto-approve
-#         working-directory: ./terraform
-#         if: github.event_name == 'workflow_dispatch'
-
-#       - name: "End results"
-#         shell: bash
-#         run: |          
-#           echo init
-#           test ${{ steps.init.outputs.exitcode }} -eq 0
-#           echo validate
-#           test ${{ steps.validate.outputs.exitcode }} -eq 0
-
 ---
-  name: Apply World Skills Australia IaC Build
-  
-  on:    
-    workflow_dispatch:
-  
-  jobs:
-    terraform-actions:
-      name: Terraform Apply
-      runs-on: ubuntu-latest
-      steps:
-        - name: Checkout Repository
-          uses: actions/checkout@v4
-  
-        - name: Configure AWS Credentials
-          uses: aws-actions/configure-aws-credentials@v4
-          with:
-            aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-            aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-            aws-region: us-east-1
-     
-        - name: Terraform Plan
-          id: apply
-          run: terraform apply -auto-approve 
-          continue-on-error: true
-          working-directory: ./terraform
-          if: github.event_name == 'workflow_dispatch'
+name: Apply World Skills Australia IaC Build
+
+on:    
+  workflow_dispatch:
+
+jobs:
+  terraform-actions:
+    name: Terraform Apply
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+    
+      - name: Terraform Plan
+        id: apply
+        run: terraform apply -auto-approve 
+        continue-on-error: true
+        working-directory: ./terraform
+        if: github.event_name == 'workflow_dispatch'
   
