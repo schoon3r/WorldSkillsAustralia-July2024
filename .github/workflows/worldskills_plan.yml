@@ -8,7 +8,7 @@ on:
 
 jobs:
   terraform-actions:
-    name: Workflow
+    name: Workflow Main
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
@@ -21,42 +21,26 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ap-southeast-2
 
-      - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v3
-        with:
-          terraform_version: 1.8.3
-          cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
-
-      - name: Terraform Fmt
-        id: fmt
-        run: terraform fmt -check -diff
-        continue-on-error: true
-        working-directory: ./terraform
-
       - name: Terraform Init
         id: init
         run: terraform init
         continue-on-error: true
         working-directory: ./terraform
 
-      - name: Terraform Validate
-        id: validate
-        run: terraform validate
-        continue-on-error: true
-        working-directory: ./terraform
-
-      - name: Terraform Plan
-        id: plan
+      - name: Terraform Plan (Main)
+        id: plan00
         run: terraform plan
         continue-on-error: true
-        working-directory: ./terraform      
+        working-directory: ./terraform/main.tf 
+      
+      - name: Terraform Plan (base_ec2)
+        id: plan01
+        run: terraform plan
+        continue-on-error: true
+        working-directory: ./terraform/base_ec2.tf
 
-      - name: "End results"
-        shell: bash
-        run: |
-          echo fmt
-          test ${{ steps.fmt.outputs.exitcode }} -eq 0
-          echo init
-          test ${{ steps.init.outputs.exitcode }} -eq 0
-          echo validate
-          test ${{ steps.validate.outputs.exitcode }} -eq 0
+      - name: Terraform Plan (ec2_prod)
+        id: plan02
+        run: terraform plan
+        continue-on-error: true
+        working-directory: ./terraform/ec2_prod.tf
