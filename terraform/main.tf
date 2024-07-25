@@ -33,7 +33,7 @@ terraform {
   backend "s3" {
     bucket         = "tf-state-12der3"
     key            = "terraform/terraform.tfstate"
-    region         = var.aws_region
+    region         = "us-east-1"
     encrypt        = true
     dynamodb_table = "tf-lock-12der3"
   }
