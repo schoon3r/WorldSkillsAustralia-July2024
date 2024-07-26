@@ -11,7 +11,7 @@ resource "aws_subnet" "private" {
 
 resource "aws_instance" "web_server" {
   count         = length(var.private_subnet)
-  ami           = "ami-080660c9757080771" 
+  ami           = "ami-032346ab877c418af" 
   instance_type = "t2.large"
   subnet_id     = aws_subnet.private[count.index].id
   private_ip    = cidrhost(aws_subnet.private[count.index].cidr_block, 10)
@@ -25,7 +25,7 @@ resource "aws_instance" "web_server" {
 
 resource "aws_instance" "vuln_vm" {
   count         = length(var.private_subnet)
-  ami           = "ami-080660c9757080771" 
+  ami           = "ami-032346ab877c418af" 
   instance_type = "t2.micro"
   subnet_id     = aws_subnet.private[count.index].id
   private_ip    = cidrhost(aws_subnet.private[count.index].cidr_block, 100)
